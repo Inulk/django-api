@@ -2,8 +2,15 @@
 
 ### Build docker
 docker build .
-docker-compose build 
+docker compose build 
 
-docker-compose up
-dockerdocker-compose run --rm app sh -c "python manange.py test"
+docker compose up
+docker compose run --rm web python manage.py
+
+## Run tests
+docker compose run --rm app python manage.py test
+
+# Impliment DB
+- create database connection
+- python manage.py migrate
 

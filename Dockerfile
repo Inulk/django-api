@@ -5,8 +5,9 @@ LABEL maintainer="inulk"
 ENV PYTHONUNBUFFERED 1
 COPY ./requirements.txt /tmp/requirements.txt
 COPY ./requirements.dev.txt /tmp/requirements.dev.txt
-COPY ./app /app
 WORKDIR /app
+# RUN mkdir /app
+COPY ./app /app
 EXPOSE 8000
 ARG DEV=false
 # using single run command to avoid create multiple layers in 
