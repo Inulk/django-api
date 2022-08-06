@@ -15,9 +15,9 @@ from django.test import SimpleTestCase
 class CommandTests(SimpleTestCase):
     """ Test Commands """
 
-    # Tests waiting for DB when DB is ready
     def test_wait_for_db_ready(self, patched_check):
-        # Return True when DB is ready
+        """ Tests waiting for DB when DB is ready.
+        Returns True when DB is ready"""
         patched_check.return_value = True
 
         # calling command
@@ -26,11 +26,15 @@ class CommandTests(SimpleTestCase):
         # command should call only once as connection is ready
         patched_check.assert_called_once_with(databases=['default'])
 
-    # Test waiting when database is getting operational error
+
     @patch('time.sleep')
     def test_wait_for_db_delay(self, patched_sleep, patched_check):
-        # returning 2 Pycopg2Errors and
-        # 3 OperationalErrors and True at last when DB is ready
+        """
+        Test waiting when database is getting operational error.
+        returning 2 Pycopg2Errors and
+        3 OperationalErrors and True at last when DB is ready
+        """
+
         patched_check.side_effect = [Psycopg2Error] * 2 + \
                                     [OperationalError] * 3 + [True]
 

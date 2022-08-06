@@ -113,6 +113,7 @@ class PublicUserApiTest(TestCase):
 
 
 class PrivateUserApiTest(TestCase):
+    """Test APIs after user login"""
     def setUp(self):
         self.user = create_user(
             email='test@example.com',
@@ -136,6 +137,7 @@ class PrivateUserApiTest(TestCase):
         self.assertEquals(res.status_code, status.HTTP_405_METHOD_NOT_ALLOWED)
 
     def test_update_user_profile(self):
+        """Test updating user profile"""
         payload = {'name': 'Updated Name', 'password': 'updatedpassword'}
 
         res = self.client.patch(ME_URL, payload)

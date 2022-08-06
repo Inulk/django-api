@@ -11,8 +11,8 @@ from django.core.management.base import BaseCommand
 
 class Command(BaseCommand):
 
-    # Django command to waid for DB
     def handle(self, *args, **options):
+        """Django command to wait for DB"""
         self.stdout.write('Waiting for database')
         db_up = False
         while db_up is False:
