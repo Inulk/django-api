@@ -7,7 +7,6 @@ from rest_framework.settings import api_settings
 import rest_framework.authentication as authentication
 import rest_framework.permissions as permissions
 
-
 from user.serializers import (
     UserSerializer,
     AuthTokenSerializer,

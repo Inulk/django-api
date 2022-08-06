@@ -4,27 +4,28 @@ from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from core import models
 from django.utils.translation import gettext_lazy as _
 
+
 class UserAdmin(BaseUserAdmin):
     """Define the admin page for users"""
     ordering = ['id']
-    list_display = ['email','name']
+    list_display = ['email', 'name']
     # Override field set to show in change page
     fieldsets = (
-        (None, {'fields':('email','password')}),
+        (None, {'fields': ('email', 'password')}),
         (
             _('Permissions'),
             {
-                'fields':(
+                'fields': (
                     'is_active',
                     'is_staff',
                     'is_superuser',
                 )
             }
-        ),(_('Important dates'),{'fields': ('last_login', )})
+        ), (_('Important dates'), {'fields': ('last_login',)})
     )
     readonly_fields = ['last_login']
     add_fieldsets = (
-        (None,{
+        (None, {
             'classes': ('wide',),
             'fields': (
                 'email',
@@ -37,4 +38,5 @@ class UserAdmin(BaseUserAdmin):
             )
         }),)
 
-admin.site.register(models.User,UserAdmin)
+
+admin.site.register(models.User, UserAdmin)
