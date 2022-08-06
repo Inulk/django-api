@@ -26,7 +26,6 @@ class CommandTests(SimpleTestCase):
         # command should call only once as connection is ready
         patched_check.assert_called_once_with(databases=['default'])
 
-
     @patch('time.sleep')
     def test_wait_for_db_delay(self, patched_sleep, patched_check):
         """

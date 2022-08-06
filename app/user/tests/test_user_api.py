@@ -39,7 +39,8 @@ class PublicUserApiTest(TestCase):
         self.assertNotIn('password', res.data)
 
     def test_user_with_email_exists_error(self):
-        """Tests error returned when trying to create user with existing email"""
+        """Tests error returned when trying to create user
+        with existing email"""
         payload = {
             'email': 'test@example.com',
             'password': 'testpass123',
@@ -128,7 +129,9 @@ class PrivateUserApiTest(TestCase):
         res = self.client.get(ME_URL)
 
         self.assertEqual(res.status_code, status.HTTP_200_OK)
-        self.assertEqual(res.data, {'name': self.user.name, 'email': self.user.email, })
+        self.assertEqual(res.data, {
+            'name': self.user.name,
+            'email': self.user.email,})
 
     def test_post_not_allowed(self):
         """Test is disabled for the me endpoint"""
